@@ -1,0 +1,48 @@
+# RoboSapiens Project
+
+This project aims to connect an ESP8266 (ESP12E/F) to a RoboSapiens robot by substituting the IR receiver with the ESP module. Additionally, a microphone will be added to transcribe voice commands using an API. An SD card may be used to store temporary audio before sending it to the API. Once the voice is transcribed, it will be sent to an AI chatbot like ChatGPT or a model from Hugging Face. The ultimate goal is for the AI to control the movements of the robot, potentially by training a specific model for it.
+
+## Features
+- Replace IR receiver with ESP8266 (ESP12E/F)
+- Add a microphone for voice command transcription
+- Use an API for voice transcription
+- Store temporary audio on an SD card
+- Send transcribed voice to an AI chatbot (e.g., ChatGPT, Hugging Face)
+- Future goal: AI-controlled robot movements
+
+## Components
+- ESP8266 (ESP12E/F)
+- RoboSapiens robot
+- Microphone
+- SD card (optional)
+
+## Future Work
+- Train a specific AI model to control the robot's movements
+
+## Images
+
+```markdown
+![RoboSapien Project Diagram](images/roboSapiens_diagram.png) 
+```
+ 
+ ![RoboSapien Project Diagram](src/WebServer/Robosapien.png) 
+ ![Getting ESP12 in the middle between IR and MainBoard](doc/RoboSapienIRDiagram.jpg)
+ ![Getting power from MainBoard to ESP12](doc/PowerOutFromMB.png)
+ ![Powering RS from external power cord](doc/PowerInFromFeet.png)
+ ![RS back overview](doc/OverviewBackMB.png)
+
+
+
+## References / Thanks
+Based on the great work done by:
+
+- [Kevin Haw's RoboSapien Server](http://www.kevinhaw.com/RoboSapienServer.php)
+
+- [Mark Cra's RoboSapiens Hack](https://www.markcra.com/robot/hackrs1.php)
+
+- [Aibohack's RoboSapien IR Codes](https://www.aibohack.com/robosap/ir_codes.htm)
+
+
+Robosapien is trademarks or registered trademarks of WowWee Group Limited.
+
+I accept no responsibility or liability for anything you do. You may dismantle, alter or modify your Robosapien at your own risk.
