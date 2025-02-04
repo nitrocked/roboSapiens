@@ -6,15 +6,10 @@
 #include "RoboCommand.h"
 #include "RobosapiensController.h"
 
-// Declaraciones externas para arrays de comandos
-// extern RoboCommand LeftCommands[];
-// extern RoboCommand RightCommands[];
-// extern RoboCommand OtherCommands[];
-
 // Inicialización de conteos de comandos para el tamaño de cada array
 extern int leftCommandCount;
 extern int rightCommandCount;
-extern int moveCommandCount;
+extern int commonCommandCount;
 
 // Declaración de funciones que serán implementadas en RobotWebServer.cpp
 void handleRoot();

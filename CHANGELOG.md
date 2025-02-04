@@ -1,22 +1,17 @@
 # Changelog
 
 ## [Unreleased]
-
-### Added
+### Added 
+- Funtinal WebServer control: Basic robot movement functionality
 - Initial project setup
-- Basic robot movement functionality
+
+### Added, Not tested
 - AIChatBot library 
 
-### Changed
-- N/A
-
-### Fixed
-- N/A
-
-## [1.0.0] - YYYY-MM-DD
-
-### Added
-- Initial release with basic features
+### TODO
+- Movement sequences
+    - Triki Triki
+    - 
 
 ### Changed
 - N/A

@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <AIChatbot.h>
+#include <ESP8266mDNS.h>
 #include "../secrets.h"
 #include "RobosapiensController.h"
 #include "RobotWebServer.h"
@@ -50,6 +51,15 @@ void setup()
     Serial.println("AP enabled. IP address: " + WiFi.softAPIP().toString());
     robot.sendCommand(RoboCommand::BURP); // Speak
   }
+  else
+  {
+    // Set up mDNS
+    if (MDNS.begin("klintbot")) {
+      Serial.println("mDNS responder started");
+    } else {
+      Serial.println("Error setting up mDNS responder!");
+    }
+  }
   
   // Set up web server
   Serial.println("Setting up web server...");
@@ -67,6 +77,9 @@ void setup()
 void loop()
 {  
   loopWebServer();
+  if (WiFi.status() == WL_CONNECTED) {
+    MDNS.update();
+  }
 }
 
 // Fnction definitions

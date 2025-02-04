@@ -2,6 +2,7 @@
 #define ROBOSAPIEN_COMMANDS_H
 
 #include <Arduino.h>
+#include <map>
 
 // Enumerado con los comandos del Robosapien, organizados por categorías
 enum class RoboCommand : uint8_t  {
@@ -69,94 +70,63 @@ enum class RoboCommand : uint8_t  {
     DANCE = 0xD4,                   // Bailar
 };
 
-// namespace LeftCommands {
-//     constexpr RoboCommand LEFT_ARM_UP = RoboCommand::LEFT_ARM_UP;
-//     constexpr RoboCommand LEFT_ARM_OUT = RoboCommand::LEFT_ARM_OUT;
-//     constexpr RoboCommand TILT_BODY_LEFT = RoboCommand::TILT_BODY_LEFT;
-//     constexpr RoboCommand LEFT_ARM_DOWN = RoboCommand::LEFT_ARM_DOWN;
-//     constexpr RoboCommand LEFT_ARM_IN = RoboCommand::LEFT_ARM_IN;
-//     constexpr RoboCommand TURN_LEFT = RoboCommand::TURN_LEFT;
-// }
 
-// namespace RightCommands {
-//     constexpr RoboCommand RIGHT_ARM_UP = RoboCommand::RIGHT_ARM_UP;
-//     constexpr RoboCommand RIGHT_ARM_OUT = RoboCommand::RIGHT_ARM_OUT;
-//     constexpr RoboCommand TILT_BODY_RIGHT = RoboCommand::TILT_BODY_RIGHT;
-//     constexpr RoboCommand RIGHT_ARM_DOWN = RoboCommand::RIGHT_ARM_DOWN;
-//     constexpr RoboCommand RIGHT_ARM_IN = RoboCommand::RIGHT_ARM_IN;
-//     constexpr RoboCommand TURN_RIGHT = RoboCommand::TURN_RIGHT;
-// }
-
-// namespace OtherCommands {
-//     constexpr RoboCommand WALK_FORWARD = RoboCommand::WALK_FORWARD;
-//     constexpr RoboCommand WALK_BACKWARD = RoboCommand::WALK_BACKWARD;
-//     constexpr RoboCommand STOP = RoboCommand::STOP;
-// }
-
-// namespace ProgramCommands {
-//     constexpr RoboCommand MASTER_COMMAND_PROGRAM = RoboCommand::MASTER_COMMAND_PROGRAM;
-//     constexpr RoboCommand PROGRAM_PLAY = RoboCommand::PROGRAM_PLAY;
-//     constexpr RoboCommand RIGHT_SENSOR_PROGRAM = RoboCommand::RIGHT_SENSOR_PROGRAM;
-//     constexpr RoboCommand LEFT_SENSOR_PROGRAM = RoboCommand::LEFT_SENSOR_PROGRAM;
-//     constexpr RoboCommand SONIC_SENSOR_PROGRAM = RoboCommand::SONIC_SENSOR_PROGRAM;
-// }
-
-// namespace TalkCommands {
-//     constexpr RoboCommand BURP = RoboCommand::BURP;
-//     constexpr RoboCommand LISTEN = RoboCommand::LISTEN;
-//     constexpr RoboCommand TALKBACK = RoboCommand::TALKBACK;
-//     constexpr RoboCommand WHISTLE = RoboCommand::WHISTLE;
-// }
-
-// namespace ActionCommands {
-//     constexpr RoboCommand HIGH_FIVE = RoboCommand::HIGH_FIVE;
-//     constexpr RoboCommand POWER_OFF = RoboCommand::POWER_OFF;
-//     constexpr RoboCommand RESET = RoboCommand::RESET;
-//     constexpr RoboCommand SLEEP = RoboCommand::SLEEP;
-// }
-
-// namespace SoundCommands {
-//     constexpr RoboCommand BULLDOZER = RoboCommand::BULLDOZER;
-//     constexpr RoboCommand DEMO_1 = RoboCommand::DEMO_1;
-//     constexpr RoboCommand DEMO_2 = RoboCommand::DEMO_2;
-//     constexpr RoboCommand DEMO_ALL = RoboCommand::DEMO_ALL;
-//     constexpr RoboCommand DANCE = RoboCommand::DANCE;
-//     constexpr RoboCommand OOPS_FART = RoboCommand::OOPS_FART;
-//     constexpr RoboCommand ROAR = RoboCommand::ROAR;
-// }
-
-// namespace LeftHandCommands {
-//     constexpr RoboCommand LEFT_HAND_PICKUP = RoboCommand::LEFT_HAND_PICKUP;
-//     constexpr RoboCommand LEFT_HAND_STRIKE_1 = RoboCommand::LEFT_HAND_STRIKE_1;
-//     constexpr RoboCommand LEFT_HAND_STRIKE_2 = RoboCommand::LEFT_HAND_STRIKE_2;
-//     constexpr RoboCommand LEFT_HAND_STRIKE_3 = RoboCommand::LEFT_HAND_STRIKE_3;
-//     constexpr RoboCommand LEFT_HAND_SWEEP = RoboCommand::LEFT_HAND_SWEEP;
-// }
-
-// namespace RightHandCommands {
-//     constexpr RoboCommand RIGHT_HAND_PICKUP = RoboCommand::RIGHT_HAND_PICKUP;
-//     constexpr RoboCommand RIGHT_HAND_STRIKE_1 = RoboCommand::RIGHT_HAND_STRIKE_1;
-//     constexpr RoboCommand RIGHT_HAND_STRIKE_2 = RoboCommand::RIGHT_HAND_STRIKE_2;
-//     constexpr RoboCommand RIGHT_HAND_STRIKE_3 = RoboCommand::RIGHT_HAND_STRIKE_3;
-//     constexpr RoboCommand RIGHT_HAND_SWEEP = RoboCommand::RIGHT_HAND_SWEEP;
-//     constexpr RoboCommand RIGHT_HAND_THROW = RoboCommand::RIGHT_HAND_THROW;
-//     constexpr RoboCommand RIGHT_HAND_THUMP = RoboCommand::RIGHT_HAND_THUMP;
-// }
-
-// namespace StepCommands {
-//     constexpr RoboCommand BACKWARD_STEP = RoboCommand::BACKWARD_STEP;
-//     constexpr RoboCommand FORWARD_STEP = RoboCommand::FORWARD_STEP;
-//     constexpr RoboCommand LEFT_TURN_STEP = RoboCommand::LEFT_TURN_STEP;
-//     constexpr RoboCommand RIGHT_TURN_STEP = RoboCommand::RIGHT_TURN_STEP;
-// }
-
-// namespace DemoCommands {
-//     constexpr RoboCommand DANCE = RoboCommand::DANCE;
-//     constexpr RoboCommand DEMO_1 = RoboCommand::DEMO_1;
-//     constexpr RoboCommand DEMO_2 = RoboCommand::DEMO_2;
-//     constexpr RoboCommand DEMO_ALL = RoboCommand::DEMO_ALL;
-// }
-
-
+const std::map<RoboCommand, const char*> commandNames = {
+    {RoboCommand::TURN_RIGHT, "Turn Right"},
+    {RoboCommand::RIGHT_ARM_UP, "Right Arm Up"},
+    {RoboCommand::LEFT_ARM_UP, "Left Arm Up"},
+    {RoboCommand::RIGHT_ARM_OUT, "Right Arm Out"},
+    {RoboCommand::LEFT_ARM_OUT, "Left Arm Out"},
+    {RoboCommand::TILT_BODY_RIGHT, "Tilt Body Right"},
+    {RoboCommand::RIGHT_ARM_DOWN, "Right Arm Down"},
+    {RoboCommand::LEFT_ARM_DOWN, "Left Arm Down"},
+    {RoboCommand::RIGHT_ARM_IN, "Right Arm In"},
+    {RoboCommand::LEFT_ARM_IN, "Left Arm In"},
+    {RoboCommand::TILT_BODY_LEFT, "Tilt Body Left"},
+    {RoboCommand::WALK_FORWARD, "Walk Forward"},
+    {RoboCommand::WALK_BACKWARD, "Walk Backward"},
+    {RoboCommand::TURN_LEFT, "Turn Left"},
+    {RoboCommand::STOP, "Stop"},
+    {RoboCommand::MASTER_COMMAND_PROGRAM, "Master Command Program"},
+    {RoboCommand::PROGRAM_PLAY, "Program Play"},
+    {RoboCommand::RIGHT_SENSOR_PROGRAM, "Right Sensor Program"},
+    {RoboCommand::LEFT_SENSOR_PROGRAM, "Left Sensor Program"},
+    {RoboCommand::SONIC_SENSOR_PROGRAM, "Sonic Sensor Program"},
+    {RoboCommand::RIGHT_TURN_STEP, "Right Turn Step"},
+    {RoboCommand::RIGHT_HAND_THUMP, "Right Hand Thump"},
+    {RoboCommand::RIGHT_HAND_THROW, "Right Hand Throw"},
+    {RoboCommand::SLEEP, "Sleep"},  
+    {RoboCommand::RIGHT_HAND_PICKUP, "Right Hand Pickup"},
+    {RoboCommand::LEAN_BACKWARD, "Lean Backward"},
+    {RoboCommand::FORWARD_STEP, "Forward Step"},
+    {RoboCommand::BACKWARD_STEP, "Backward Step"},
+    {RoboCommand::LEFT_TURN_STEP, "Left Turn Step"},
+    {RoboCommand::LEFT_HAND_THUMP, "Left Hand Thump"},
+    {RoboCommand::LEFT_HAND_THROW, "Left Hand Throw"},
+    {RoboCommand::LISTEN, "Listen"},
+    {RoboCommand::LEFT_HAND_PICKUP, "Left Hand Pickup"},
+    {RoboCommand::LEAN_FORWARD, "Lean Forward"},
+    {RoboCommand::RESET, "Reset"},
+    {RoboCommand::RIGHT_HAND_STRIKE_3, "Right Hand Strike 3"},
+    {RoboCommand::RIGHT_HAND_SWEEP, "Right Hand Sweep"},
+    {RoboCommand::BURP, "Burp"},
+    {RoboCommand::RIGHT_HAND_STRIKE_2, "Right Hand Strike 2"},
+    {RoboCommand::HIGH_FIVE, "High Five"},
+    {RoboCommand::RIGHT_HAND_STRIKE_1, "Right Hand Strike 1"},
+    {RoboCommand::BULLDOZER, "Bulldozer"},
+    {RoboCommand::OOPS_FART, "Oops Fart"},
+    {RoboCommand::LEFT_HAND_STRIKE_3, "Left Hand Strike 3"},
+    {RoboCommand::LEFT_HAND_SWEEP, "Left Hand Sweep"},
+    {RoboCommand::WHISTLE, "Whistle"},
+    {RoboCommand::LEFT_HAND_STRIKE_2, "Left Hand Strike 2"},
+    {RoboCommand::TALKBACK, "Talkback"},
+    {RoboCommand::LEFT_HAND_STRIKE_1, "Left Hand Strike 1"},
+    {RoboCommand::ROAR, "Roar"},
+    {RoboCommand::DEMO_ALL, "Demo All"},
+    {RoboCommand::POWER_OFF, "Power Off"},
+    {RoboCommand::DEMO_1, "Demo 1"},
+    {RoboCommand::DEMO_2, "Demo 2"},
+    {RoboCommand::DANCE, "Dance"},
+};  
 
 #endif // ROBOSAPIEN_COMMANDS_H

@@ -1,4 +1,5 @@
 #include "RobosapiensController.h"
+#include <utils.h>
 
 RobosapiensController::RobosapiensController(uint8_t pin) : controlPin(pin) {}
 
@@ -13,7 +14,7 @@ RobosapiensController::RobosapiensController(uint8_t pin) : controlPin(pin) {}
             Serial.println("Comando inválido: el MSB debe ser 1.");
             return;
         }
-
+        Serial.println("> RobosapiensController sendCommand: " + getCommandName(command));
         // Señal de inicio (low por 8/1200 segundos)
         setLowForTicks(8);
 
